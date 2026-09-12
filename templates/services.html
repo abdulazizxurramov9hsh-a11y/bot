@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Xizmatlar & Mahorat — Xurramov Abdulaziz</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #090d16;
+            --surface: #111726;
+            --surface-hover: #172033;
+            --card-border: rgba(255, 255, 255, 0.08);
+            --primary: #4f46e5;
+            --primary-light: #818cf8;
+            --accent: #06b6d4;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --gradient-text: linear-gradient(135deg, #a5b4fc 0%, #38bdf8 50%, #c084fc 100%);
+            --btn-gradient: linear-gradient(135deg, #4f46e5 0%, #06b6d4 100%);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg);
+            color: var(--text-main);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            background-image: 
+                radial-gradient(at 0% 0%, rgba(79, 70, 229, 0.12) 0px, transparent 50%),
+                radial-gradient(at 100% 100%, rgba(6, 182, 212, 0.08) 0px, transparent 50%);
+        }
+
+        nav {
+            background: rgba(9, 13, 22, 0.85);
+            backdrop-filter: blur(16px);
+            border-bottom: 1px solid var(--card-border);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            padding: 1.1rem 2.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.35rem;
+            font-weight: 800;
+            text-decoration: none;
+            color: var(--text-main);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logo span {
+            background: var(--gradient-text);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 0.75rem;
+        }
+
+        .nav-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            padding: 0.55rem 1.1rem;
+            border-radius: 12px;
+            transition: all 0.25s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: #ffffff;
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid var(--card-border);
+        }
+
+        .nav-links a.nav-btn {
+            background: var(--btn-gradient);
+            color: #fff;
+            box-shadow: 0 4px 14px rgba(79, 70, 229, 0.35);
+            border: none;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 3.5rem 1.5rem;
+            flex: 1;
+            width: 100%;
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(79, 70, 229, 0.12);
+            border: 1px solid rgba(79, 70, 229, 0.3);
+            color: #c7d2fe;
+            padding: 0.4rem 1.2rem;
+            border-radius: 9999px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        h1 {
+            font-size: 2.8rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        h1 span {
+            background: var(--gradient-text);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        p.lead {
+            color: var(--text-muted);
+            max-width: 650px;
+            margin: 0 auto 3.5rem;
+            text-align: center;
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+        }
+
+        .service-card {
+            background: var(--surface);
+            border: 1px solid var(--card-border);
+            border-radius: 20px;
+            padding: 2.25rem;
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .service-card:hover {
+            transform: translateY(-6px);
+            border-color: rgba(99, 102, 241, 0.4);
+            background: var(--surface-hover);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+        }
+
+        .service-icon {
+            font-size: 2.4rem;
+            width: 60px;
+            height: 60px;
+            border-radius: 16px;
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid var(--card-border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .service-card h3 {
+            font-size: 1.35rem;
+            font-weight: 700;
+            margin-bottom: 0.75rem;
+        }
+
+        .service-card p {
+            color: var(--text-muted);
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+            font-size: 0.95rem;
+        }
+
+        .features-list {
+            list-style: none;
+            margin-top: auto;
+            border-top: 1px solid var(--card-border);
+            padding-top: 1.25rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.6rem;
+        }
+
+        .features-list li {
+            color: #cbd5e1;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        footer {
+            border-top: 1px solid var(--card-border);
+            padding: 2rem;
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            background: rgba(9, 13, 22, 0.9);
+        }
+
+        @media (max-width: 768px) {
+            nav {
+                flex-direction: column;
+                gap: 1rem;
+                padding: 1rem;
+            }
+            .nav-links {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            h1 {
+                font-size: 2.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="{% url 'about' %}" class="logo" title="Xurramov Abdulaziz haqida">
+            👑 <span>Xurramov Abdulaziz</span>
+        </a>
+        <ul class="nav-links">
+            <li><a href="{% url 'home' %}">🏠 Bosh sahifa</a></li>
+            <li><a href="{% url 'photos' %}">📸 Fotolarim</a></li>
+            <li><a href="{% url 'about' %}">👤 Men haqimda</a></li>
+            <li><a href="{% url 'services' %}" class="active">⚡ Xizmatlar</a></li>
+            <li><a href="{% url 'contact' %}" class="nav-btn">📫 Aloqa</a></li>
+        </ul>
+    </nav>
+
+    <main class="container">
+        <div style="text-align: center;">
+            <span class="badge">💼 Mahorat & Xizmatlar</span>
+            <h1>Abdulazizning <span>Xizmatlari</span> 🚀</h1>
+            <p class="lead">Yuqori sifat, zamonaviy uslub va ishonchli IT ishlanmalari bilan loyihalaringizni yangi bosqichga olib chiqamiz! ⚡</p>
+        </div>
+
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="service-icon">🐍</div>
+                <h3>Python & Django Veb Saytlar</h3>
+                <p>Tezkor, ishonchli va xavfsiz backend tizimiga ega zamonaviy Django veb-ilovalari.</p>
+                <ul class="features-list">
+                    <li>🚀 Kuchli Django arxitekturasi</li>
+                    <li>🔒 Yuqori xavfsizlik va ma'lumotlar bazasi</li>
+                    <li>⚡ Tez yuklanuvchi dinamik sahifalar</li>
+                </ul>
+            </div>
+
+            <div class="service-card">
+                <div class="service-icon">🎨</div>
+                <h3>Zamonaviy & Skromniy UI Dizayn</h3>
+                <p>Ko'zni charchatmaydigan, nafis va jozibador ranglar uyg'unligidagi interfeyslar.</p>
+                <ul class="features-list">
+                    <li>✨ Elegant dark mavzular</li>
+                    <li>📱 Barcha qurilmalarga to'liq mos</li>
+                    <li>🎯 Foydalanuvchi uchun qulay boshqaruv</li>
+                </ul>
+            </div>
+
+            <div class="service-card">
+                <div class="service-icon">📸</div>
+                <h3>Media & Foto Galereyalar</h3>
+                <p>Interaktiv va yengil yuklanuvchi fotogalereyalar, portfolio va taqdimot sahifalari.</p>
+                <ul class="features-list">
+                    <li>🖼️ Chiroyli modal ko'rish oynasi</li>
+                    <li>⚡ Yuqori sifatli rasmlar optimizatsiyasi</li>
+                    <li>💫 Micro-animatsiyalar va effektlar</li>
+                </ul>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>© 2026 Xurramov Abdulaziz. Barcha huquqlar himoyalangan. 🚀</p>
+    </footer>
+
+</body>
+</html>
