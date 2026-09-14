@@ -304,6 +304,42 @@
             background: rgba(9, 13, 22, 0.9);
         }
 
+        .lang-switch-wrapper {
+            display: inline-flex;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--card-border);
+            padding: 3px;
+            border-radius: 9999px;
+            gap: 2px;
+        }
+
+        .lang-btn {
+            background: transparent;
+            border: none;
+            color: var(--text-muted);
+            font-size: 0.8rem;
+            font-weight: 700;
+            padding: 0.35rem 0.65rem;
+            border-radius: 9999px;
+            cursor: pointer;
+            transition: all 0.25s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.3rem;
+        }
+
+        .lang-btn:hover {
+            color: #fff;
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        .lang-btn.active {
+            background: var(--btn-gradient);
+            color: #fff;
+            box-shadow: 0 2px 10px rgba(79, 70, 229, 0.4);
+        }
+
         @media (max-width: 768px) {
             nav {
                 flex-direction: column;
@@ -327,18 +363,23 @@
             👑 <span>Xurramov Abdulaziz</span>
         </a>
         <ul class="nav-links">
-            <li><a href="{% url 'home' %}">🏠 Bosh sahifa</a></li>
-            <li><a href="{% url 'photos' %}" class="active">📸 Fotolarim</a></li>
-            <li><a href="{% url 'about' %}">👤 Men haqimda</a></li>
-            <li><a href="{% url 'services' %}">⚡ Xizmatlar</a></li>
-            <li><a href="{% url 'contact' %}" class="nav-btn">📫 Aloqa</a></li>
+            <li><a href="{% url 'home' %}" data-i18n="nav_home">🏠 Bosh sahifa</a></li>
+            <li><a href="{% url 'photos' %}" class="active" data-i18n="nav_photos">📸 Fotolarim</a></li>
+            <li><a href="{% url 'about' %}" data-i18n="nav_about">👤 Men haqimda</a></li>
+            <li><a href="{% url 'services' %}" data-i18n="nav_services">⚡ Xizmatlar</a></li>
+            <li><a href="{% url 'contact' %}" class="nav-btn" data-i18n="nav_contact">📫 Aloqa</a></li>
         </ul>
+        <div class="lang-switch-wrapper">
+            <button type="button" class="lang-btn active" data-lang="uz" onclick="setLanguage('uz')">🇺🇿 UZ</button>
+            <button type="button" class="lang-btn" data-lang="ru" onclick="setLanguage('ru')">🇷🇺 RU</button>
+            <button type="button" class="lang-btn" data-lang="en" onclick="setLanguage('en')">🇬🇧 EN</button>
+        </div>
     </nav>
 
     <div class="header-section">
-        <span class="badge">📸 Maxsus Foto To'plam</span>
-        <h1>Abdulazizning <span>Foto Galereyasi</span> ✨</h1>
-        <p class="lead">Dasturlash, texnologiya, tabiat va muvaffaqiyat ilhomlantiruvchi ajoyib suratlar. Rasmlarni kattalashtirish uchun ustiga bosing!</p>
+        <span class="badge" data-i18n="photos_badge">📸 Maxsus Foto To'plam</span>
+        <h1><span data-i18n="photos_title_prefix">Abdulazizning </span><span data-i18n="photos_title_highlight">Foto Galereyasi</span> ✨</h1>
+        <p class="lead" data-i18n="photos_lead">Dasturlash, texnologiya, tabiat va muvaffaqiyat ilhomlantiruvchi ajoyib suratlar. Rasmlarni kattalashtirish uchun ustiga bosing!</p>
     </div>
 
     <main class="gallery-container">
@@ -347,8 +388,8 @@
             <div class="photo-card" onclick="openModal('{% static 'images/profile_suit.jpg' %}')" style="border-color: rgba(99, 102, 241, 0.6); box-shadow: 0 0 25px rgba(99, 102, 241, 0.3);">
                 <img src="{% static 'images/profile_suit.jpg' %}" alt="Xurramov Abdulaziz" style="object-position: 50% 25%;">
                 <div class="photo-overlay">
-                    <div class="photo-title">🎩 Xurramov Abdulaziz</div>
-                    <div class="photo-desc">Kamtarlik, intizom va yuksak maqsadlar sari odimlash ✨</div>
+                    <div class="photo-title" data-i18n="photo1_title">🎩 Xurramov Abdulaziz</div>
+                    <div class="photo-desc" data-i18n="photo1_desc">Kamtarlik, intizom va yuksak maqsadlar sari odimlash ✨</div>
                 </div>
             </div>
 
@@ -356,62 +397,62 @@
             <div class="photo-card" onclick="openModal('{% static 'images/abdulaziz_old.jpg' %}')" style="border-color: rgba(6, 182, 212, 0.5);">
                 <img src="{% static 'images/abdulaziz_old.jpg' %}" alt="Xurramov Abdulaziz Arxiv" style="object-position: 50% 15%;">
                 <div class="photo-overlay">
-                    <div class="photo-title">📸 Abdulaziz (Xotiralar)</div>
-                    <div class="photo-desc">Har bir bosqich — tajriba va shaxsiy o'sish 🚀</div>
+                    <div class="photo-title" data-i18n="photo2_title">📸 Abdulaziz (Xotiralar)</div>
+                    <div class="photo-desc" data-i18n="photo2_desc">Har bir bosqich — tajriba va shaxsiy o'sish 🚀</div>
                 </div>
             </div>
 
             <div class="photo-card" onclick="openModal('https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=1200')">
                 <img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=600" alt="Dasturchi Ish Joyi">
                 <div class="photo-overlay">
-                    <div class="photo-title">💻 Dasturchi Mehnat Makoni</div>
-                    <div class="photo-desc">Kod yozish, yangi g'oyalar va cheksiz izlanish 🚀</div>
+                    <div class="photo-title" data-i18n="photo3_title">💻 Dasturchi Mehnat Makoni</div>
+                    <div class="photo-desc" data-i18n="photo3_desc">Kod yozish, yangi g'oyalar va cheksiz izlanish 🚀</div>
                 </div>
             </div>
 
             <div class="photo-card" onclick="openModal('https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=1200')">
                 <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=600" alt="Tog' Cho'qqisi">
                 <div class="photo-overlay">
-                    <div class="photo-title">🏔️ Yuksak Cho'qqilar Sari</div>
-                    <div class="photo-desc">Har bir maqsad — zabt etilishi kerak bo'lgan cho'qqidir 🎯</div>
+                    <div class="photo-title" data-i18n="photo4_title">🏔️ Yuksak Cho'qqilar Sari</div>
+                    <div class="photo-desc" data-i18n="photo4_desc">Har bir maqsad — zabt etilishi kerak bo'lgan cho'qqidir 🎯</div>
                 </div>
             </div>
 
             <div class="photo-card" onclick="openModal('https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=1200')">
                 <img src="https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=600" alt="Kiberxavfsizlik va Kod">
                 <div class="photo-overlay">
-                    <div class="photo-title">⚡ Python & Django Sehr-jodusi</div>
-                    <div class="photo-desc">Kuchli algoritmlar va xavfsiz backend arxitekturasi 🛡️</div>
+                    <div class="photo-title" data-i18n="photo5_title">⚡ Python & Django Sehr-jodusi</div>
+                    <div class="photo-desc" data-i18n="photo5_desc">Kuchli algoritmlar va xavfsiz backend arxitekturasi 🛡️</div>
                 </div>
             </div>
 
             <div class="photo-card" onclick="openModal('https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=1200')">
                 <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=600" alt="Jamoaviy Hamkorlik">
                 <div class="photo-overlay">
-                    <div class="photo-title">👥 Ijodiy Jamoa Bilan Ishlash</div>
-                    <div class="photo-desc">Katta loyihalarni birgalikda muvaffaqiyatli yakunlash 🤝</div>
+                    <div class="photo-title" data-i18n="photo6_title">👥 Ijodiy Jamoa Bilan Ishlash</div>
+                    <div class="photo-desc" data-i18n="photo6_desc">Katta loyihalarni birgalikda muvaffaqiyatli yakunlash 🤝</div>
                 </div>
             </div>
 
             <div class="photo-card" onclick="openModal('https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=1200')">
                 <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=600" alt="Koinot va Texnologiya">
                 <div class="photo-overlay">
-                    <div class="photo-title">🌌 Cheksiz Orzular & Koinot</div>
-                    <div class="photo-desc">Tasavvur chegarasiz — natijalar esa buyuk bo'ladi 🌟</div>
+                    <div class="photo-title" data-i18n="photo7_title">🌌 Cheksiz Orzular & Koinot</div>
+                    <div class="photo-desc" data-i18n="photo7_desc">Tasavvur chegarasiz — natijalar esa buyuk bo'ladi 🌟</div>
                 </div>
             </div>
 
             <div class="photo-card" onclick="openModal('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1200')">
                 <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=600" alt="Kelajak Shahri">
                 <div class="photo-overlay">
-                    <div class="photo-title">🏙️ Kelajak Megapolislari</div>
-                    <div class="photo-desc">IT texnologiyalar hayotimizni qulay va chiroyli qiladi ✨</div>
+                    <div class="photo-title" data-i18n="photo8_title">🏙️ Kelajak Megapolislari</div>
+                    <div class="photo-desc" data-i18n="photo8_desc">IT texnologiyalar hayotimizni qulay va chiroyli qiladi ✨</div>
                 </div>
             </div>
         </div>
 
         <div class="back-bar">
-            <a href="{% url 'home' %}" class="btn-back">&larr; 🏠 Bosh sahifaga qaytish</a>
+            <a href="{% url 'home' %}" class="btn-back" data-i18n="btn_back_home">&larr; 🏠 Bosh sahifaga qaytish</a>
         </div>
     </main>
 
@@ -423,9 +464,10 @@
     </div>
 
     <footer>
-        <p>© 2026 Xurramov Abdulaziz. Barcha huquqlar himoyalangan. 🚀</p>
+        <p data-i18n="footer_rights">© 2026 Xurramov Abdulaziz. Barcha huquqlar himoyalangan. 🚀</p>
     </footer>
 
+    <script src="{% static 'js/translations.js' %}"></script>
     <script>
         function openModal(imgSrc) {
             document.getElementById('modalImg').src = imgSrc;

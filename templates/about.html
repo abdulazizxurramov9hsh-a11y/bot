@@ -251,6 +251,42 @@
             background: rgba(9, 13, 22, 0.9);
         }
 
+        .lang-switch-wrapper {
+            display: inline-flex;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--card-border);
+            padding: 3px;
+            border-radius: 9999px;
+            gap: 2px;
+        }
+
+        .lang-btn {
+            background: transparent;
+            border: none;
+            color: var(--text-muted);
+            font-size: 0.8rem;
+            font-weight: 700;
+            padding: 0.35rem 0.65rem;
+            border-radius: 9999px;
+            cursor: pointer;
+            transition: all 0.25s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.3rem;
+        }
+
+        .lang-btn:hover {
+            color: #fff;
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        .lang-btn.active {
+            background: var(--btn-gradient);
+            color: #fff;
+            box-shadow: 0 2px 10px rgba(79, 70, 229, 0.4);
+        }
+
         @media (max-width: 768px) {
             nav {
                 flex-direction: column;
@@ -274,29 +310,34 @@
             👑 <span>Xurramov Abdulaziz</span>
         </a>
         <ul class="nav-links">
-            <li><a href="{% url 'home' %}">🏠 Bosh sahifa</a></li>
-            <li><a href="{% url 'photos' %}">📸 Fotolarim</a></li>
-            <li><a href="{% url 'about' %}" class="active">👤 Men haqimda</a></li>
-            <li><a href="{% url 'services' %}">⚡ Xizmatlar</a></li>
-            <li><a href="{% url 'contact' %}" class="nav-btn">📫 Aloqa</a></li>
+            <li><a href="{% url 'home' %}" data-i18n="nav_home">🏠 Bosh sahifa</a></li>
+            <li><a href="{% url 'photos' %}" data-i18n="nav_photos">📸 Fotolarim</a></li>
+            <li><a href="{% url 'about' %}" class="active" data-i18n="nav_about">👤 Men haqimda</a></li>
+            <li><a href="{% url 'services' %}" data-i18n="nav_services">⚡ Xizmatlar</a></li>
+            <li><a href="{% url 'contact' %}" class="nav-btn" data-i18n="nav_contact">📫 Aloqa</a></li>
         </ul>
+        <div class="lang-switch-wrapper">
+            <button type="button" class="lang-btn active" data-lang="uz" onclick="setLanguage('uz')">🇺🇿 UZ</button>
+            <button type="button" class="lang-btn" data-lang="ru" onclick="setLanguage('ru')">🇷🇺 RU</button>
+            <button type="button" class="lang-btn" data-lang="en" onclick="setLanguage('en')">🇬🇧 EN</button>
+        </div>
     </nav>
 
     <main class="container">
-        <span class="badge">🌟 Tanishing & Ma'lumot</span>
-        <h1>Xurramov Abdulaziz — <span>Kreativ Dasturchi</span> 🚀</h1>
+        <span class="badge" data-i18n="about_badge">🌟 Tanishing & Ma'lumot</span>
+        <h1><span data-i18n="about_title_prefix">Xurramov Abdulaziz — </span><span data-i18n="about_title_highlight">Kreativ Dasturchi</span> 🚀</h1>
 
         <div class="about-grid">
             <div class="about-text">
-                <p>
+                <p data-i18n="about_p1">
                     Salom! Men <strong>Xurramov Abdulaziz</strong> — axborot texnologiyalari, Python, Django freymvorki va zamonaviy veb-ishlanmalarga mehr qo'ygan iqtidorli dasturchiman. 💻⚡
                 </p>
                 
-                <div class="highlight-quote">
+                <div class="highlight-quote" data-i18n="about_quote">
                     "Har bir katta muvaffaqiyat — intilish, qat'iyat va har kuni o'z ustida ishlash bilan boshlanadi." 🎯🔥
                 </div>
 
-                <p>
+                <p data-i18n="about_p2">
                     Men o'z oldimga har doim yuksak maqsadlarni qo'yaman. Har qanday yangi loyiha va muammoni ijodiy hamda professional yondashuv bilan yechishga harakat qilaman. Doimo yangiliklarga ochiqman va eng so'nggi texnologiyalarni o'rganishdan to'xtamayman! 🌐✨
                 </p>
 
@@ -304,50 +345,51 @@
                     <div class="skill-item">
                         <span class="icon">🐍</span>
                         <div>
-                            <h4>Python & Django</h4>
-                            <p>Backend arxitektura va logika</p>
+                            <h4 data-i18n="skill1_title">Python & Django</h4>
+                            <p data-i18n="skill1_desc">Backend arxitektura va logika</p>
                         </div>
                     </div>
                     <div class="skill-item">
                         <span class="icon">🎨</span>
                         <div>
-                            <h4>Zamonaviy Web UI</h4>
-                            <p>HTML5, CSS3, Chiroyli Dizayn</p>
+                            <h4 data-i18n="skill2_title">Zamonaviy Web UI</h4>
+                            <p data-i18n="skill2_desc">HTML5, CSS3, Chiroyli Dizayn</p>
                         </div>
                     </div>
                     <div class="skill-item">
                         <span class="icon">🚀</span>
                         <div>
-                            <h4>Tezkorlik & Sifat</h4>
-                            <p>Toza kod va yuqori unumdorlik</p>
+                            <h4 data-i18n="skill3_title">Tezkorlik & Sifat</h4>
+                            <p data-i18n="skill3_desc">Toza kod va yuqori unumdorlik</p>
                         </div>
                     </div>
                     <div class="skill-item">
                         <span class="icon">💡</span>
                         <div>
-                            <h4>Kreativ Yondashuv</h4>
-                            <p>Yangi g'oyalar va innovatsiya</p>
+                            <h4 data-i18n="skill4_title">Kreativ Yondashuv</h4>
+                            <p data-i18n="skill4_desc">Yangi g'oyalar va innovatsiya</p>
                         </div>
                     </div>
                 </div>
 
-                <a href="{% url 'photos' %}" class="btn-action">📸 Fotolarimni Ko'rish &rarr;</a>
+                <a href="{% url 'photos' %}" class="btn-action" data-i18n="btn_view_photos">📸 Fotolarimni Ko'rish &rarr;</a>
             </div>
 
             <div class="about-image-card">
                 <img src="{% static 'images/profile_suit.jpg' %}" alt="Xurramov Abdulaziz" style="width: 100%; border-radius: 14px; object-fit: cover; object-position: 50% 25%; max-height: 520px; box-shadow: 0 10px 30px rgba(0,0,0,0.5);">
                 <h3>Xurramov Abdulaziz</h3>
-                <p style="margin-bottom: 0.8rem;">⚡ Python & Django Developer</p>
-                <a href="https://instagram.com/xurramovv.vv" target="_blank" style="display: inline-flex; align-items: center; gap: 0.4rem; background: linear-gradient(135deg, #e1306c, #fd1d1d, #f56040); color: white; padding: 0.5rem 1.2rem; border-radius: 9999px; text-decoration: none; font-weight: 600; font-size: 0.9rem; margin-top: 0.4rem; box-shadow: 0 4px 15px rgba(225, 48, 108, 0.4);">
-                    📷 Instagram: @xurramovv.vv
+                <p style="margin-bottom: 0.8rem;" data-i18n="card_role">⚡ Python & Django Developer</p>
+                <a href="https://t.me/+998919595778" target="_blank" style="display: inline-flex; align-items: center; gap: 0.4rem; background: linear-gradient(135deg, #0284c7, #0ea5e9); color: white; padding: 0.5rem 1.2rem; border-radius: 9999px; text-decoration: none; font-weight: 600; font-size: 0.9rem; margin-top: 0.4rem; box-shadow: 0 4px 15px rgba(14, 165, 233, 0.4);" data-i18n="btn_telegram_chat">
+                    ✈️ Telegram: Bog'lanish
                 </a>
             </div>
         </div>
     </main>
 
     <footer>
-        <p>© 2026 Xurramov Abdulaziz. Barcha huquqlar himoyalangan. 🚀</p>
+        <p data-i18n="footer_rights">© 2026 Xurramov Abdulaziz. Barcha huquqlar himoyalangan. 🚀</p>
     </footer>
 
+    <script src="{% static 'js/translations.js' %}"></script>
 </body>
 </html>

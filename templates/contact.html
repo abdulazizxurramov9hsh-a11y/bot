@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="uz">
 <head>
@@ -269,6 +270,42 @@
             background: rgba(9, 13, 22, 0.9);
         }
 
+        .lang-switch-wrapper {
+            display: inline-flex;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--card-border);
+            padding: 3px;
+            border-radius: 9999px;
+            gap: 2px;
+        }
+
+        .lang-btn {
+            background: transparent;
+            border: none;
+            color: var(--text-muted);
+            font-size: 0.8rem;
+            font-weight: 700;
+            padding: 0.35rem 0.65rem;
+            border-radius: 9999px;
+            cursor: pointer;
+            transition: all 0.25s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.3rem;
+        }
+
+        .lang-btn:hover {
+            color: #fff;
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        .lang-btn.active {
+            background: var(--btn-gradient);
+            color: #fff;
+            box-shadow: 0 2px 10px rgba(79, 70, 229, 0.4);
+        }
+
         @media (max-width: 768px) {
             nav {
                 flex-direction: column;
@@ -292,25 +329,30 @@
             👑 <span>Xurramov Abdulaziz</span>
         </a>
         <ul class="nav-links">
-            <li><a href="{% url 'home' %}">🏠 Bosh sahifa</a></li>
-            <li><a href="{% url 'photos' %}">📸 Fotolarim</a></li>
-            <li><a href="{% url 'about' %}">👤 Men haqimda</a></li>
-            <li><a href="{% url 'services' %}">⚡ Xizmatlar</a></li>
-            <li><a href="{% url 'contact' %}" class="active nav-btn">📫 Aloqa</a></li>
+            <li><a href="{% url 'home' %}" data-i18n="nav_home">🏠 Bosh sahifa</a></li>
+            <li><a href="{% url 'photos' %}" data-i18n="nav_photos">📸 Fotolarim</a></li>
+            <li><a href="{% url 'about' %}" data-i18n="nav_about">👤 Men haqimda</a></li>
+            <li><a href="{% url 'services' %}" data-i18n="nav_services">⚡ Xizmatlar</a></li>
+            <li><a href="{% url 'contact' %}" class="active nav-btn" data-i18n="nav_contact">📫 Aloqa</a></li>
         </ul>
+        <div class="lang-switch-wrapper">
+            <button type="button" class="lang-btn active" data-lang="uz" onclick="setLanguage('uz')">🇺🇿 UZ</button>
+            <button type="button" class="lang-btn" data-lang="ru" onclick="setLanguage('ru')">🇷🇺 RU</button>
+            <button type="button" class="lang-btn" data-lang="en" onclick="setLanguage('en')">🇬🇧 EN</button>
+        </div>
     </nav>
 
     <main class="container">
-        <span class="badge">📫 Aloqa & Muloqot</span>
-        <h1>Abdulaziz Bilan <span>Bog'lanish</span> 🤝</h1>
-        <p class="lead">Hamkorlik, yangi IT loyihalar, takliflar yoki shunchaki suhbat uchun quyidagi kanallar orqali bog'lanishingiz mumkin! 🚀</p>
+        <span class="badge" data-i18n="contact_badge">📫 Aloqa & Muloqot</span>
+        <h1><span data-i18n="contact_title_prefix">Abdulaziz Bilan </span><span data-i18n="contact_title_highlight">Bog'lanish</span> 🤝</h1>
+        <p class="lead" data-i18n="contact_lead">Hamkorlik, yangi IT loyihalar, takliflar yoki shunchaki suhbat uchun quyidagi kanallar orqali bog'lanishingiz mumkin! 🚀</p>
 
         <div class="contact-grid">
             <div class="contact-info">
                 <div class="info-card">
                     <div class="info-icon">📱</div>
                     <div class="info-details">
-                        <h4>Telefon</h4>
+                        <h4 data-i18n="info_phone">Telefon</h4>
                         <p><a href="tel:+998919595778" style="color: #38bdf8; text-decoration: none; font-weight: 600;">+998 (91) 959-57-78</a></p>
                     </div>
                 </div>
@@ -318,62 +360,55 @@
                 <div class="info-card">
                     <div class="info-icon">✈️</div>
                     <div class="info-details">
-                        <h4>Telegram</h4>
+                        <h4 data-i18n="info_telegram">Telegram</h4>
                         <p><a href="https://t.me/+998919595778" target="_blank" style="color: #38bdf8; text-decoration: none; font-weight: 600;">+998 91 959 57 78</a></p>
-                    </div>
-                </div>
-
-                <div class="info-card">
-                    <div class="info-icon">📸</div>
-                    <div class="info-details">
-                        <h4>Instagram</h4>
-                        <p><a href="https://instagram.com/xurramovv.vv" target="_blank" style="color: #f43f5e; text-decoration: none; font-weight: 600;">@xurramovv.vv</a></p>
                     </div>
                 </div>
 
                 <div class="info-card">
                     <div class="info-icon">📍</div>
                     <div class="info-details">
-                        <h4>Manzil</h4>
-                        <p>Toshkent shahri, O'zbekiston 🇺🇿</p>
+                        <h4 data-i18n="info_location">Manzil</h4>
+                        <p data-i18n="info_location_val">Toshkent shahri, O'zbekiston 🇺🇿</p>
                     </div>
                 </div>
 
                 <div class="info-card">
                     <div class="info-icon">✉️</div>
                     <div class="info-details">
-                        <h4>Elektron Pochta</h4>
+                        <h4 data-i18n="info_email">Elektron Pochta</h4>
                         <p>abdulaziz.xurramov@gmail.com</p>
                     </div>
                 </div>
             </div>
 
             <div class="contact-form">
-                <form onsubmit="event.preventDefault(); alert('Xabaringiz Abdulazizga muvaffaqiyatli yuborildi! 🚀');">
+                <form onsubmit="handleContactFormSubmit(event)">
                     <div class="form-group">
-                        <label for="name">👤 Ismingiz</label>
-                        <input type="text" id="name" placeholder="Ismingizni kiriting..." required>
+                        <label for="name" data-i18n="form_name_label">👤 Ismingiz</label>
+                        <input type="text" id="name" placeholder="Ismingizni kiriting..." data-i18n-ph="form_name_ph" required>
                     </div>
 
                     <div class="form-group">
-                        <label for="email">✉️ Elektron pochtangiz / Telegramingiz</label>
-                        <input type="text" id="email" placeholder="@username yoki pochta..." required>
+                        <label for="email" data-i18n="form_email_label">✉️ Elektron pochtangiz / Telegramingiz</label>
+                        <input type="text" id="email" placeholder="@username yoki pochta..." data-i18n-ph="form_email_ph" required>
                     </div>
 
                     <div class="form-group">
-                        <label for="message">✍️ Xabaringiz</label>
-                        <textarea id="message" rows="4" placeholder="Taklif yoki fikringizni yozing..." required></textarea>
+                        <label for="message" data-i18n="form_msg_label">✍️ Xabaringiz</label>
+                        <textarea id="message" rows="4" placeholder="Taklif yoki fikringizni yozing..." data-i18n-ph="form_msg_ph" required></textarea>
                     </div>
 
-                    <button type="submit" class="submit-btn">Abdulazizga Yuborish 🚀</button>
+                    <button type="submit" class="submit-btn" data-i18n="form_submit_btn">Abdulazizga Yuborish 🚀</button>
                 </form>
             </div>
         </div>
     </main>
 
     <footer>
-        <p>© 2026 Xurramov Abdulaziz. Barcha huquqlar himoyalangan. 🚀</p>
+        <p data-i18n="footer_rights">© 2026 Xurramov Abdulaziz. Barcha huquqlar himoyalangan. 🚀</p>
     </footer>
 
+    <script src="{% static 'js/translations.js' %}"></script>
 </body>
 </html>

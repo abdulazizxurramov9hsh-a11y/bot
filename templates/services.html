@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="uz">
 <head>
@@ -222,6 +223,42 @@
             background: rgba(9, 13, 22, 0.9);
         }
 
+        .lang-switch-wrapper {
+            display: inline-flex;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--card-border);
+            padding: 3px;
+            border-radius: 9999px;
+            gap: 2px;
+        }
+
+        .lang-btn {
+            background: transparent;
+            border: none;
+            color: var(--text-muted);
+            font-size: 0.8rem;
+            font-weight: 700;
+            padding: 0.35rem 0.65rem;
+            border-radius: 9999px;
+            cursor: pointer;
+            transition: all 0.25s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.3rem;
+        }
+
+        .lang-btn:hover {
+            color: #fff;
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        .lang-btn.active {
+            background: var(--btn-gradient);
+            color: #fff;
+            box-shadow: 0 2px 10px rgba(79, 70, 229, 0.4);
+        }
+
         @media (max-width: 768px) {
             nav {
                 flex-direction: column;
@@ -245,60 +282,66 @@
             👑 <span>Xurramov Abdulaziz</span>
         </a>
         <ul class="nav-links">
-            <li><a href="{% url 'home' %}">🏠 Bosh sahifa</a></li>
-            <li><a href="{% url 'photos' %}">📸 Fotolarim</a></li>
-            <li><a href="{% url 'about' %}">👤 Men haqimda</a></li>
-            <li><a href="{% url 'services' %}" class="active">⚡ Xizmatlar</a></li>
-            <li><a href="{% url 'contact' %}" class="nav-btn">📫 Aloqa</a></li>
+            <li><a href="{% url 'home' %}" data-i18n="nav_home">🏠 Bosh sahifa</a></li>
+            <li><a href="{% url 'photos' %}" data-i18n="nav_photos">📸 Fotolarim</a></li>
+            <li><a href="{% url 'about' %}" data-i18n="nav_about">👤 Men haqimda</a></li>
+            <li><a href="{% url 'services' %}" class="active" data-i18n="nav_services">⚡ Xizmatlar</a></li>
+            <li><a href="{% url 'contact' %}" class="nav-btn" data-i18n="nav_contact">📫 Aloqa</a></li>
         </ul>
+        <div class="lang-switch-wrapper">
+            <button type="button" class="lang-btn active" data-lang="uz" onclick="setLanguage('uz')">🇺🇿 UZ</button>
+            <button type="button" class="lang-btn" data-lang="ru" onclick="setLanguage('ru')">🇷🇺 RU</button>
+            <button type="button" class="lang-btn" data-lang="en" onclick="setLanguage('en')">🇬🇧 EN</button>
+        </div>
     </nav>
 
     <main class="container">
         <div style="text-align: center;">
-            <span class="badge">💼 Mahorat & Xizmatlar</span>
-            <h1>Abdulazizning <span>Xizmatlari</span> 🚀</h1>
-            <p class="lead">Yuqori sifat, zamonaviy uslub va ishonchli IT ishlanmalari bilan loyihalaringizni yangi bosqichga olib chiqamiz! ⚡</p>
+            <span class="badge" data-i18n="services_badge">💼 Mahorat & Xizmatlar</span>
+            <h1><span data-i18n="services_title_prefix">Abdulazizning </span><span data-i18n="services_title_highlight">Xizmatlari</span> 🚀</h1>
+            <p class="lead" data-i18n="services_lead">Yuqori sifat, zamonaviy uslub va ishonchli IT ishlanmalari bilan loyihalaringizni yangi bosqichga olib chiqamiz! ⚡</p>
         </div>
 
         <div class="services-grid">
             <div class="service-card">
                 <div class="service-icon">🐍</div>
-                <h3>Python & Django Veb Saytlar</h3>
-                <p>Tezkor, ishonchli va xavfsiz backend tizimiga ega zamonaviy Django veb-ilovalari.</p>
+                <h3 data-i18n="serv1_title">Python & Django Veb Saytlar</h3>
+                <p data-i18n="serv1_desc">Tezkor, ishonchli va xavfsiz backend tizimiga ega zamonaviy Django veb-ilovalari.</p>
                 <ul class="features-list">
-                    <li>🚀 Kuchli Django arxitekturasi</li>
-                    <li>🔒 Yuqori xavfsizlik va ma'lumotlar bazasi</li>
-                    <li>⚡ Tez yuklanuvchi dinamik sahifalar</li>
+                    <li data-i18n="serv1_f1">🚀 Kuchli Django arxitekturasi</li>
+                    <li data-i18n="serv1_f2">🔒 Yuqori xavfsizlik va ma'lumotlar bazasi</li>
+                    <li data-i18n="serv1_f3">⚡ Tez yuklanuvchi dinamik sahifalar</li>
                 </ul>
             </div>
 
             <div class="service-card">
                 <div class="service-icon">🎨</div>
-                <h3>Zamonaviy & Skromniy UI Dizayn</h3>
-                <p>Ko'zni charchatmaydigan, nafis va jozibador ranglar uyg'unligidagi interfeyslar.</p>
+                <h3 data-i18n="serv2_title">Zamonaviy & Skromniy UI Dizayn</h3>
+                <p data-i18n="serv2_desc">Ko'zni charchatmaydigan, nafis va jozibador ranglar uyg'unligidagi interfeyslar.</p>
                 <ul class="features-list">
-                    <li>✨ Elegant dark mavzular</li>
-                    <li>📱 Barcha qurilmalarga to'liq mos</li>
-                    <li>🎯 Foydalanuvchi uchun qulay boshqaruv</li>
+                    <li data-i18n="serv2_f1">✨ Elegant dark mavzular</li>
+                    <li data-i18n="serv2_f2">📱 Barcha qurilmalarga to'liq mos</li>
+                    <li data-i18n="serv2_f3">🎯 Foydalanuvchi uchun qulay boshqaruv</li>
                 </ul>
             </div>
 
             <div class="service-card">
                 <div class="service-icon">📸</div>
-                <h3>Media & Foto Galereyalar</h3>
-                <p>Interaktiv va yengil yuklanuvchi fotogalereyalar, portfolio va taqdimot sahifalari.</p>
+                <h3 data-i18n="serv3_title">Media & Foto Galereyalar</h3>
+                <p data-i18n="serv3_desc">Interaktiv va yengil yuklanuvchi fotogalereyalar, portfolio va taqdimot sahifalari.</p>
                 <ul class="features-list">
-                    <li>🖼️ Chiroyli modal ko'rish oynasi</li>
-                    <li>⚡ Yuqori sifatli rasmlar optimizatsiyasi</li>
-                    <li>💫 Micro-animatsiyalar va effektlar</li>
+                    <li data-i18n="serv3_f1">🖼️ Chiroyli modal ko'rish oynasi</li>
+                    <li data-i18n="serv3_f2">⚡ Yuqori sifatli rasmlar optimizatsiyasi</li>
+                    <li data-i18n="serv3_f3">💫 Micro-animatsiyalar va effektlar</li>
                 </ul>
             </div>
         </div>
     </main>
 
     <footer>
-        <p>© 2026 Xurramov Abdulaziz. Barcha huquqlar himoyalangan. 🚀</p>
+        <p data-i18n="footer_rights">© 2026 Xurramov Abdulaziz. Barcha huquqlar himoyalangan. 🚀</p>
     </footer>
 
+    <script src="{% static 'js/translations.js' %}"></script>
 </body>
 </html>
