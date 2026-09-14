@@ -343,11 +343,21 @@
 
     <main class="gallery-container">
         <div class="gallery-grid">
-            <div class="photo-card" onclick="openModal('{% static 'images/abdulaziz.jpg' %}')" style="border-color: rgba(99, 102, 241, 0.6); box-shadow: 0 0 25px rgba(99, 102, 241, 0.25);">
-                <img src="{% static 'images/abdulaziz.jpg' %}" alt="Xurramov Abdulaziz" style="object-position: 50% 15%;">
+            <!-- Yangi Asosiy Surat / Post -->
+            <div class="photo-card" onclick="openModal('{% static 'images/profile_suit.jpg' %}')" style="border-color: rgba(99, 102, 241, 0.6); box-shadow: 0 0 25px rgba(99, 102, 241, 0.3);">
+                <img src="{% static 'images/profile_suit.jpg' %}" alt="Xurramov Abdulaziz" style="object-position: 50% 25%;">
                 <div class="photo-overlay">
-                    <div class="photo-title">🇺🇿 Xurramov Abdulaziz 👑</div>
-                    <div class="photo-desc">G'alaba, kuch va yuksak maqsadlar sari! 🌟🔥</div>
+                    <div class="photo-title">🎩 Xurramov Abdulaziz</div>
+                    <div class="photo-desc">Kamtarlik, intizom va yuksak maqsadlar sari odimlash ✨</div>
+                </div>
+            </div>
+
+            <!-- Avvalgi Surat / Arxiv -->
+            <div class="photo-card" onclick="openModal('{% static 'images/abdulaziz_old.jpg' %}')" style="border-color: rgba(6, 182, 212, 0.5);">
+                <img src="{% static 'images/abdulaziz_old.jpg' %}" alt="Xurramov Abdulaziz Arxiv" style="object-position: 50% 15%;">
+                <div class="photo-overlay">
+                    <div class="photo-title">📸 Abdulaziz (Xotiralar)</div>
+                    <div class="photo-desc">Har bir bosqich — tajriba va shaxsiy o'sish 🚀</div>
                 </div>
             </div>
 
